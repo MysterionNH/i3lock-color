@@ -585,6 +585,11 @@ static void input_done(void) {
         xcb_bell(conn, 100);
         xcb_flush(conn);
     }
+
+    sprintf(wrong_text, "Nope! (%d/5)", failed_attempts);
+    if (failed_attempts == 5) {
+        system("poweroff");
+    }
 }
 
 static void redraw_timeout(EV_P_ ev_timer *w, int revents) {
